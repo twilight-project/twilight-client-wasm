@@ -1,0 +1,85 @@
+# Update Cargo.toml dependencies:
+[package]
+name = "twilight-wasm"
+version = "0.1.0"
+edition = "2021"
+authors = ["Twilight Project"]
+description = "WebAssembly bindings for Twilight blockchain operations"
+license = "Apache-2.0"
+repository = "https://github.com/twilight-project/twilight-client-wasm"
+readme = "README.md"
+keywords = ["wasm", "blockchain", "zero-knowledge", "twilight", "browser"]
+categories = ["wasm", "cryptography", "web-programming"]
+
+[profile.release]
+debug = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+#crate-type = ["rlib"]
+[dependencies]
+curve25519-dalek = { version = "3", default-features = false }
+serde = { version = "1.0", features = ["derive"] }
+
+wasm-bindgen = "*"
+getrandom = { version = "0.1", features = ["wasm-bindgen"] }
+clear_on_drop = {version = "0.2.4", features = ["no_cc"]}
+rand = {version = "0.7", features = ["wasm-bindgen"]}
+serde_json = "1.0.58"
+console_error_panic_hook = "0.1.6"
+bincode = "1.3.3"
+hex = "^0.3"
+sha3 = "0.9.1"
+
+
+[dependencies.transaction]
+git = "https://github.com/twilight-project/zkos-rust.git"
+branch = "develop"
+
+[dependencies.address]
+git = "https://github.com/twilight-project/zkos-rust.git"
+branch = "develop"
+
+[dependencies.zkvm]
+git = "https://github.com/twilight-project/zkos-rust.git"
+branch = "develop"
+
+
+[dependencies.zkschnorr]
+git = "https://github.com/twilight-project/zk-schnorr.git"
+
+[dependencies.twilight-client-sdk]
+git = "https://github.com/twilight-project/twilight-client-sdk.git"
+branch = "twilight-wasm"
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = false
+
+[dependencies.web-sys]
+version = "0.3.4"
+features = [
+  'Document',
+  'Element',
+  'HtmlElement',
+  'Node',
+  'Window',
+]
+
+[dependencies.uuid]
+version = "1.6.1"
+features = [
+     "v4",
+     "v7",
+     "serde",
+     "js",
+]
+
+[[bench]]
+name = "my_benchmark"
+harness = false
+
+[dependencies.criterion]
+version = "0.3"
+features = [
+      "html_reports",
+  ]
