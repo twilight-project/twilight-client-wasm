@@ -3,7 +3,6 @@
 name = "twilight-wasm"
 version = "0.1.0"
 edition = "2021"
-authors = ["Twilight Project"]
 description = "WebAssembly bindings for Twilight blockchain operations"
 license = "Apache-2.0"
 repository = "https://github.com/twilight-project/twilight-client-wasm"
